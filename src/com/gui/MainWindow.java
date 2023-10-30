@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -16,6 +19,9 @@ public class MainWindow extends JFrame implements ActionListener {
 	private JButton btn;
 	private JLabel label;
 	private JTextField simpleText;
+	private JMenuBar menuBar;
+	private JMenu menuArchive, menuOptions;
+	private JMenuItem item1, item2, item3;
 	
 	//Constructor
 	public MainWindow() {
@@ -45,6 +51,36 @@ public class MainWindow extends JFrame implements ActionListener {
 	private void initializeComponents() {
 		setLayout(null); //Para distribucion de los elementos
 		
+		//Barra Menu
+		menuBar=new JMenuBar();
+		
+		//Items
+		item1=new JMenuItem("item1");
+		item1.addActionListener(this);
+		
+		item2=new JMenuItem("item2");
+		item2.addActionListener(this);
+		
+		item3=new JMenuItem("item3");
+		item3.addActionListener(this);
+		
+		//Menus
+		menuArchive=new JMenu("Archivo");
+		//Le agregamos sus items
+		menuArchive.add(item1);
+		menuArchive.add(item2);
+		
+		menuOptions=new JMenu("Opciones");
+		//Le agregamos sus items
+		menuOptions.add(item3);
+		
+		//Agregar menus a la Barra de Manu
+		menuBar.add(menuArchive);
+		menuBar.add(menuOptions);
+		
+		//Asignamos el menuBar
+		setJMenuBar(menuBar);
+		
 		//Boton
 		btn=new JButton(); //Creacion de un boton
 		btn.setText("Presioname");
@@ -68,12 +104,16 @@ public class MainWindow extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String data=simpleText.getText(); //Para capturar lo que se escriba en el campo de texto
+		
+		//
+		if(e.getSource() == item1) {			
+			label.setText("Dato= " + data);
+			label.setBackground(Color.RED);
+		}
 		
 		//Si se presiona el boton. . .
 		if(e.getSource() == btn) {
-			
-			String data=simpleText.getText(); //Para capturar lo que se escriba en el campo de texto
-			
 			label.setText("Dato= " + data);
 			label.setBackground(Color.GREEN);
 			JOptionPane.showMessageDialog(null, "Boton presionado");
