@@ -106,11 +106,17 @@ public class MainWindow extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String data=simpleText.getText(); //Para capturar lo que se escriba en el campo de texto
 		
-		//
+		//Si presionamos la opcion item1
 		if(e.getSource() == item1) {			
 			label.setText("Dato= " + data);
 			label.setBackground(Color.RED);
 		}
+		
+		//Si presionamos la opcion item2
+				if(e.getSource() == item2) {			
+					label.setText("Dato= " + data);
+					label.setBackground(Color.CYAN);
+				}
 		
 		//Si se presiona el boton. . .
 		if(e.getSource() == btn) {
