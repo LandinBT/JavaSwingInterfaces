@@ -1,8 +1,19 @@
 package com.gui;
 
-import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MainWindow extends JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class MainWindow extends JFrame implements ActionListener {
+	
+	//Variables
+	private JButton btn;
+	private JLabel label;
 	
 	//Constructor
 	public MainWindow() {
@@ -25,5 +36,37 @@ public class MainWindow extends JFrame {
 		/*
 		 * En este caso lo hago mejor desde el Main.Java
 		 * */
+		
+		initializeComponents();
+	}
+	
+	private void initializeComponents() {
+		setLayout(null); //Para distribucion de los elementos
+		
+		//Boton
+		btn=new JButton(); //Creacion de un boton
+		btn.setText("Presioname");
+		btn.setBounds(10, 30, 120, 30); //x, y, width, height
+		
+		btn.addActionListener(this); //Agregar la accion al boton
+		
+		//Etiqueta
+		label=new JLabel("Etiqueta");
+		label.setBounds(150, 20, 150, 40);
+		label.setOpaque(true); //Para poder modificar el color de fondo
+		
+		add(btn); //Agregamos a la pantalla
+		add(label); //Agregamos etiqueta
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == btn) {
+			label.setText("Boton presionado");
+			label.setBackground(Color.GREEN);
+			JOptionPane.showMessageDialog(null, "Boton presionado");
+		}
+		
 	}
 }

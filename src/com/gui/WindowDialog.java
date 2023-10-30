@@ -9,4 +9,5 @@ public class WindowDialog extends JDialog{
 		setTitle("Ventana Dialogo");
 		setLocationRelativeTo(null);
 	}
+	
 }
