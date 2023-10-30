@@ -8,12 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class MainWindow extends JFrame implements ActionListener {
 	
 	//Variables
 	private JButton btn;
 	private JLabel label;
+	private JTextField simpleText;
 	
 	//Constructor
 	public MainWindow() {
@@ -46,7 +48,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		//Boton
 		btn=new JButton(); //Creacion de un boton
 		btn.setText("Presioname");
-		btn.setBounds(10, 30, 120, 30); //x, y, width, height
+		btn.setBounds(10, 90, 120, 30); //x, y, width, height
 		
 		btn.addActionListener(this); //Agregar la accion al boton
 		
@@ -55,15 +57,24 @@ public class MainWindow extends JFrame implements ActionListener {
 		label.setBounds(150, 20, 150, 40);
 		label.setOpaque(true); //Para poder modificar el color de fondo
 		
+		//Campo de texto simple
+		simpleText=new JTextField();
+		simpleText.setBounds(20, 30, 120, 30);
+		
 		add(btn); //Agregamos a la pantalla
 		add(label); //Agregamos etiqueta
+		add(simpleText); //Agregamos el campo de texto simple
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		//Si se presiona el boton. . .
 		if(e.getSource() == btn) {
-			label.setText("Boton presionado");
+			
+			String data=simpleText.getText(); //Para capturar lo que se escriba en el campo de texto
+			
+			label.setText("Dato= " + data);
 			label.setBackground(Color.GREEN);
 			JOptionPane.showMessageDialog(null, "Boton presionado");
 		}
